@@ -33,9 +33,7 @@ class Habit(models.Model):
         verbose_name="Время на выполнение (сек)",
     )
     is_public = models.BooleanField(default=False, verbose_name="Признак публичности")
-    last_reminder_date = models.DateField(
-        null=True, blank=True, verbose_name="Дата последнего напоминания"
-    )
+    last_reminder_date = models.DateField(null=True, blank=True, verbose_name="Дата последнего напоминания")
 
     class Meta:
         verbose_name = "Привычка"

@@ -21,18 +21,12 @@ class HabitValidator:
         periodicity = get("periodicity")
 
         if reward and related:
-            raise ValidationError(
-                "Нельзя одновременно указать вознаграждение и связанную привычку."
-            )
+            raise ValidationError("Нельзя одновременно указать вознаграждение и связанную привычку.")
         if related and not related.is_pleasant:
             raise ValidationError("Связанной может быть только приятная привычка.")
         if is_pleasant and (reward or related):
-            raise ValidationError(
-                "У приятной привычки не может быть вознаграждения или связанной привычки."
-            )
+            raise ValidationError("У приятной привычки не может быть вознаграждения или связанной привычки.")
         if duration is not None and duration > 120:
             raise ValidationError("Время выполнения не может превышать 120 секунд.")
         if periodicity is not None and not 1 <= periodicity <= 7:
-            raise ValidationError(
-                "Привычку нельзя выполнять реже, чем раз в 7 дней."
-            )
+            raise ValidationError("Привычку нельзя выполнять реже, чем раз в 7 дней.")
