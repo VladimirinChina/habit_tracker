@@ -223,3 +223,10 @@ media
 schema.yml
 
 celerybeat-schedule*
+.idea/
+.env
+.venv/
+__pycache__/
+*.pyc
+.coverage
+htmlcov/
