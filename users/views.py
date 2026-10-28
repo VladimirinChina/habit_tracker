@@ -4,7 +4,7 @@ from rest_framework import generics
 from rest_framework.permissions import AllowAny
 
 from users.models import User
-from users.serializers import UserRegisterSerializer, UserProfileSerializer
+from users.serializers import UserProfileSerializer, UserRegisterSerializer
 
 
 class UserProfileAPIView(generics.RetrieveUpdateAPIView[User]):
