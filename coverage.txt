@@ -1,0 +1,28 @@
+Name                    Stmts   Miss  Cover   Missing
+-----------------------------------------------------
+config/__init__.py          2      0   100%
+config/celery.py            6      0   100%
+config/settings.py         34      0   100%
+config/urls.py              4      0   100%
+habits/__init__.py          0      0   100%
+habits/admin.py             1      0   100%
+habits/apps.py              3      0   100%
+habits/models.py           21      0   100%
+habits/paginators.py        4      0   100%
+habits/permissions.py       7      0   100%
+habits/serializers.py      14      0   100%
+habits/services.py         14      0   100%
+habits/tasks.py            26      1    96%   33
+habits/urls.py              5      0   100%
+habits/validators.py       25      2    92%   30, 32
+habits/views.py            27      0   100%
+users/__init__.py           0      0   100%
+users/admin.py              1      0   100%
+users/apps.py               3      0   100%
+users/managers.py          19      0   100%
+users/models.py            13      0   100%
+users/serializers.py       16      0   100%
+users/urls.py               6      0   100%
+users/views.py             12      0   100%
+-----------------------------------------------------
+TOTAL                     263      3    99%

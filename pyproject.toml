@@ -75,3 +75,17 @@ package-mode = false
 
 [tool.django-stubs]
 django_settings_module = "config.settings"
+
+[tool.coverage.run]
+source = ["."]
+omit = [
+    "*/migrations/*",
+    "*/tests.py",
+    "manage.py",
+    "config/asgi.py",
+    "config/wsgi.py",
+    ".venv/*",
+]
+
+[tool.coverage.report]
+show_missing = true
