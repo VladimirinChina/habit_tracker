@@ -102,6 +102,7 @@ class HabitAPITests(APITestCase):
     def test_public_list(self) -> None:
         make_habit(self.other, is_public=True)
         make_habit(self.other, is_public=False)
+        self.client.force_authenticate(user=None)
         response = self.client.get(reverse("habits:habit-public"))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["count"], 1)
