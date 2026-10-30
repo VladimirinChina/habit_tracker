@@ -2,7 +2,7 @@ from typing import cast
 
 from django.db.models import QuerySet
 from rest_framework import generics
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from habits.models import Habit
 from habits.permissions import IsOwner
@@ -21,10 +21,11 @@ class HabitListAPIView(generics.ListAPIView[Habit]):
 
 
 class PublicHabitListAPIView(generics.ListAPIView[Habit]):
-    """Список публичных привычек (только чтение)."""
+    """Список публичных привычек (только чтение, без авторизации)."""
 
     serializer_class = HabitSerializer
     queryset = Habit.objects.filter(is_public=True).order_by("id")
+    permission_classes = [AllowAny]
 
 
 class HabitCreateAPIView(generics.CreateAPIView[Habit]):
@@ -47,5 +48,6 @@ class HabitUpdateAPIView(generics.RetrieveUpdateAPIView[Habit]):
 class HabitDestroyAPIView(generics.DestroyAPIView[Habit]):
     """Удаление своей привычки."""
 
+    serializer_class = HabitSerializer
     queryset = Habit.objects.all()
     permission_classes = [IsAuthenticated, IsOwner]
