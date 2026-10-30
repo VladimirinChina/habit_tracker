@@ -230,3 +230,4 @@ __pycache__/
 *.pyc
 .coverage
 htmlcov/
+staticfiles/
