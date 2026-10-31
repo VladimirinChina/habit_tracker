@@ -30,7 +30,10 @@ dev = [
     "flake8 (>=7.4.1,<8.0.0)",
     "mypy (>=2.4.0,<3.0.0)",
     "coverage (>=7.17.0,<8.0.0)",
-    "isort (>=9.0.2,<10.0.0)"
+    "isort (>=9.0.2,<10.0.0)",
+    "djangorestframework-stubs (>=3.18.1,<4.0.0)",
+    "django-stubs (>=6.1.2,<7.0.0)",
+    "celery-types (>=0.26.0,<0.27.0)"
 ]
 
 
@@ -72,3 +75,17 @@ package-mode = false
 
 [tool.django-stubs]
 django_settings_module = "config.settings"
+
+[tool.coverage.run]
+source = ["."]
+omit = [
+    "*/migrations/*",
+    "*/tests.py",
+    "manage.py",
+    "config/asgi.py",
+    "config/wsgi.py",
+    ".venv/*",
+]
+
+[tool.coverage.report]
+show_missing = true
