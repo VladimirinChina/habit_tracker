@@ -216,6 +216,7 @@ class ReminderTaskTests(TestCase):
     def test_telegram_error_does_not_break_task(self, mock_now: MagicMock, mock_send: MagicMock) -> None:
         mock_send.side_effect = requests.RequestException("boom")
         habit = make_habit(self.user)
-        send_habit_reminders()
+        with self.assertLogs("habits.tasks", level="ERROR"):
+            send_habit_reminders()
         habit.refresh_from_db()
         self.assertIsNone(habit.last_reminder_date)

@@ -16,7 +16,8 @@ dependencies = [
     "drf-spectacular (>=0.30.0,<0.31.0)",
     "celery (>=5.6.3,<6.0.0)",
     "redis (>=8.1.0,<9.0.0)",
-    "requests (>=2.34.2,<3.0.0)"
+    "requests (>=2.34.2,<3.0.0)",
+    "gunicorn (>=26.2.0,<27.0.0)"
 ]
 
 
@@ -48,6 +49,7 @@ exclude = '''
 
 
 [tool.isort]
+profile = "black"
 line_length = 119
 
 [tool.mypy]
@@ -66,9 +68,6 @@ plugins = ["mypy_django_plugin.main", "mypy_drf_plugin.main"]
 module = ["django_filters.*", "celery.*"]
 ignore_missing_imports = true
 
-[tool.flake8]
-max-line-length = 119
-exclude = [".venv", ".git", "__pycache__"]
 
 [tool.poetry]
 package-mode = false
