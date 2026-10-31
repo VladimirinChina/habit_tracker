@@ -156,6 +156,14 @@ jobs:
             echo "$GHCR_TOKEN" | docker login ghcr.io -u "$GHCR_USER" --password-stdin
             docker compose -f docker-compose.prod.yaml pull
             docker compose -f docker-compose.prod.yaml up -d --remove-orphans
+            docker compose -f docker-compose.prod.yaml restart nginx
             docker image prune -f
-            sleep 20
-            curl -fsS -o /dev/null "http://localhost:${NGINX_PORT}/api/schema/"
+            for i in $(seq 1 30); do
+              if curl -fsS -o /dev/null "http://localhost:${NGINX_PORT}/api/schema/"; then
+                echo "Application is up"
+                exit 0
+              fi
+              sleep 3
+            done
+            docker compose -f docker-compose.prod.yaml logs --tail=50 app nginx
+            exit 1
